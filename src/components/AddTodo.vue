@@ -28,7 +28,7 @@
  
  const addNewTodo = () => {
      const payload = {
-          active: true,
+          active: false,
           title: todoInput.value,
           description: "",
           uid: "aasdfsdfklnsdf",

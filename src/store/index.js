@@ -6,9 +6,13 @@ const state = ref({
   addTodoVisible: false,
   activeFolder: null,
   folders: [
+    {uid: "all",
+    folderName: "All",
+    todos: []
+    },
     {
       uid: "zasdfhuljb348ijb",
-      folderName: "Noah",
+      folderName: "Home",
       todos: [
         {
           active: false,
@@ -31,11 +35,11 @@ const state = ref({
       ],
     },
     {
-      folderName: "work",
+      folderName: "Work",
       uid: "asdfhuasdfljb348ijb",
       todos: [
         {
-          active: true,
+          active: false,
           title: "Design Magazine",
           description: "",
           uid: "asdfklnsdf",
@@ -49,7 +53,18 @@ const state = ref({
       ],
     },
   ],
+  
 });
+  //compute all initial todos
+state.value.folders.forEach((item) => {
+  if(item.uid !== 'all'){
+  item.todos.forEach((todo) => {
+    console.log('creating all todos: ', todo)
+    state.value.folders[0].todos.push(todo)}
+      )
+    }
+  }
+)
 //methods
 const methods = {
   toggleAddFolder() {
@@ -59,15 +74,26 @@ const methods = {
   toggleAddTodo() {
     state.value.addTodoVisible = !state.value.addTodoVisible;
     console.log(state.value.addTodoVisible);
+    console.log(state.value.activeFolder);
   },
   addNewFolder(folderPayload) {
     state.value.folders.push(folderPayload);
     console.log("payload:", folderPayload);
   },
   addNewTodo(todoPayload, index) {
-    console.log(todoPayload, index)
-    state.value.folders[index].todos.push(todoPayload);
-  }
+    if(state.value.activeFolder == null){
+      state.value.folders[0].todos.push(todoPayload);
+
+    } else if(state.value.folders[index].uid == 'all'){
+      state.value.folders[0].todos.push(todoPayload);
+
+    } else
+    {
+      console.log(todoPayload, index)
+      state.value.folders[0].todos.push(todoPayload);
+  
+      state.value.folders[index].todos.push(todoPayload);}
+    }
 };
 
 export default { state, methods };

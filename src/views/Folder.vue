@@ -8,7 +8,7 @@
         </div>
         <h2 style="margin: 10px;">{{store.state.value.folders[activeFolderIndex].folderName}}</h2>
 
-  <div>
+  <div style="margin-bottom: 100px;">
     <div
       v-for="todo in store.state.value.folders[activeFolderIndex].todos"
       :key="todo.uid"
@@ -16,7 +16,7 @@
       <div
         class="todo-container p-shadow-2"
       >
-        <div><Checkbox v-model="todo.active" :binary="true" style="margin-right: 10px;" /></div>
+        <div><Checkbox @click="showStore" v-model="todo.active" :binary="true" style="margin-right: 10px;" /></div>
         <router-link
         :to="'/todo/' + activeFolderIndex + '/' + todo.uid" style="flex-grow: 2; font-weight: 300; font-color: black">
           {{ todo.title }}
@@ -41,7 +41,9 @@ const route = useRoute();
 const state = inject("store").state.value;
 const methods = inject("store").methods;
 const activeFolderIndex = ref(null);
-
+const showStore = () => {
+  console.log(state)
+}
 const todoInput = ref("");
 state.folders.findIndex((element, index) => {
   if (element.uid == route.params.id) {

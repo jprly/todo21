@@ -7,7 +7,7 @@
         </span></div>
 </div>
 
-<Folders />
+<Folders  />
 
 <AddFolder />
 </template>
