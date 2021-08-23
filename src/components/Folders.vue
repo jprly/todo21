@@ -1,13 +1,9 @@
 <template>
-  <h2 style="margin: 10px;">Folders</h2>
-  <div style="margin-bottom: 100px;">
-    <div >
- 
+  <h2 style="margin: 10px">Folders</h2>
+  <div style="margin-bottom: 100px">
+    <div>
       <div v-for="folder in store.state.value.folders" :key="folder.uid">
-        <router-link
-          :to="'/folder/' + folder.uid"
-          class="folder-container p-shadow-2"
-        >
+        <router-link :to="'/folder/' + folder.uid" class="folder-container">
           <div
             class="material-icons-outlined"
             style="margin-right: 10px; color: #2196f3"
