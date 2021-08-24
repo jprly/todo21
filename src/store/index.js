@@ -17,7 +17,7 @@ const state = ref({
         {
           active: false,
           title: "Get Milk",
-          description: "",
+          description: "Get whole milk, not that weak stuff.",
           uid: "ashfuoie9472nn2kn",
         },
         {
@@ -59,7 +59,7 @@ const state = ref({
 state.value.folders.forEach((item) => {
   if(item.uid !== 'all'){
   item.todos.forEach((todo) => {
-    console.log('creating all todos: ', todo)
+    // console.log('creating all todos: ', todo)
     state.value.folders[0].todos.push(todo)}
       )
     }
@@ -69,7 +69,7 @@ state.value.folders.forEach((item) => {
 const methods = {
   toggleAddFolder() {
     state.value.addFolderVisible = !state.value.addFolderVisible;
-    console.log(state.value.addFolderVisible);
+    // console.log(state.value.addFolderVisible);
   },
   toggleAddTodo() {
     state.value.addTodoVisible = !state.value.addTodoVisible;
