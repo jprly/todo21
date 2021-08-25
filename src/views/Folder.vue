@@ -1,4 +1,6 @@
 <template>
+  <Stats :todos="filteredTodos" />
+
   <div style="display: flex">
     <div style="margin: 10px; flex-grow: 2">
       <span class="p-input-icon-left" style="width: 100%">
@@ -13,6 +15,7 @@
       </span>
     </div>
   </div>
+
   <div style="display: flex">
     <div style="flex-grow: 1">
       <h2 style="margin: 10px">
@@ -21,8 +24,9 @@
     </div>
     <div style="margin-right: 10px">
       <Button
+      class="p-button-rounded p-button-secondary p-button-text"
         type="button"
-        label="Sort"
+        icon="pi pi-sort"
         @click="toggle"
         aria-haspopup="true"
         aria-controls="overlay_menu"
@@ -81,6 +85,8 @@
 
 <script setup>
 import { formatDistance, subDays, format } from "date-fns";
+
+import Stats from "../components/Stats.vue";
 
 import { useRoute } from "vue-router";
 import { inject, ref } from "vue";
@@ -183,7 +189,7 @@ const handleSearch = () => {
 const filteredTodos = ref([]);
 filteredTodos.value = state.folders[activeFolderIndex.value].todos;
 
-console.log("filteredTodos", filteredTodos.value);
+// console.log("filteredTodos", filteredTodos.value);
 const sortFilteredTodosDate = () => {
   sortValue = "date";
   filteredTodos.value.sort(compare);

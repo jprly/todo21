@@ -2,7 +2,8 @@
   <div class="navbar">
     <span
       class="material-icons-outlined"
-      style="font-size: 30px"
+      style="font-size: 30px; cursor: pointer;
+"
       @click="methods.toggleAddFolder"
     >
       create_new_folder
@@ -10,7 +11,8 @@
     <span style="color: grey">{{ state.folders.length }} folders</span>
     <span
       class="material-icons-outlined"
-      style="font-size: 30px"
+      style="font-size: 30px; cursor: pointer;
+"
       @click="methods.toggleAddTodo"
     >
       add_task

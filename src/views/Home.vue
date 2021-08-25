@@ -1,4 +1,6 @@
 <template>
+<Stats :todos="allTodos" />
+
   <div style="display: flex">
     <div style="margin: 10px; flex-grow: 2">
       <span class="p-input-icon-left" style="width: 100%">
@@ -11,7 +13,6 @@
       </span>
     </div>
   </div>
-
   <Folders />
 
   <AddFolder />
@@ -20,6 +21,7 @@
 <script setup>
 import { inject } from "vue";
 import Folders from "../components/Folders.vue";
+import Stats from "../components/Stats.vue";
 import AddFolder from "../components/AddFolder.vue";
 import { format, formatDistance, formatRelative, subDays } from "date-fns";
 // console.log(format(new Date(), "'Today is a' eeee"))
@@ -28,6 +30,8 @@ import { format, formatDistance, formatRelative, subDays } from "date-fns";
 
 const state = inject("store").state.value;
 const methods = inject("store").methods;
+const allTodos = state.folders.find(item => item.uid == 'all').todos;
+
 state.activeFolder = null;
 </script>
 
