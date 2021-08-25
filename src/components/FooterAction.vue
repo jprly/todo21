@@ -1,18 +1,17 @@
 <template>
   <div class="navbar">
     <span
+      v-if="true"
       class="material-icons-outlined"
-      style="font-size: 30px; cursor: pointer;
-"
+      style="font-size: 30px; cursor: pointer"
       @click="methods.toggleAddFolder"
     >
-      create_new_folder
-    </span>
+      create_new_folder </span
+    ><span v-else style="width: 30px"></span>
     <span style="color: grey">{{ state.folders.length }} folders</span>
     <span
       class="material-icons-outlined"
-      style="font-size: 30px; cursor: pointer;
-"
+      style="font-size: 30px; cursor: pointer"
       @click="methods.toggleAddTodo"
     >
       add_task
