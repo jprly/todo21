@@ -1,0 +1,6 @@
+{
+  "appId": "com.riley.www",
+  "appName": "todo21",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
